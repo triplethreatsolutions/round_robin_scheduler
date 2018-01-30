@@ -1,4 +1,5 @@
 import json
+import timeit
 
 # a list of teams
 even_teams = ['A', 'B', 'C', 'D']
@@ -28,12 +29,33 @@ print(odd_teams)
 print("Odd # Teams: ", odd_number_teams)
 print("Odd # Games: ", odd_number_games)
 
-matches = [(team, opp)
-           for team in even_teams
-           for opp in even_teams
-           if team != opp] * 1
+# make empty list to hold matches
+matches = []
+
+# determine # of times teams will play each other
+number_plays = 1
+
+for id in range (0, (1 * number_plays)):
+    # copy registered teams for match generation algorithm
+    teams = odd_teams[:]
+    registered_teams = odd_teams[:]
+    # match generation algorithm, single play only
+    for team in registered_teams:
+        for opp in teams:
+            if opp != team:
+                matches.append((team, opp))
+        del teams[0]
 
 print(matches)
+
+for match in matches:
+    if match[0] != 'BYE' and match[1] != 'BYE':
+        print ("Home:" + match[0] + " vs Away: " + match[1])
+
+
+
+
+
 
 
 
