@@ -31,6 +31,8 @@ print("Odd # Games: ", odd_number_games)
 
 # make empty list to hold matches
 matches = []
+games = []
+number_of_games = 0
 
 # determine # of times teams will play each other
 number_plays = 1
@@ -46,11 +48,17 @@ for id in range (0, (1 * number_plays)):
                 matches.append((team, opp))
         del teams[0]
 
-print(matches)
+#print(matches)
 
+# Build a list of dictionaries of games
 for match in matches:
     if match[0] != 'BYE' and match[1] != 'BYE':
-        print ("Home:" + match[0] + " vs Away: " + match[1])
+        game = {'home': match[0], 'away': match[1], 'time': 0, 'location': 0, 'court': 0}
+        games.append(game)
+        number_of_games = number_of_games + 1
+
+print(games)
+print("Number of Games: ", number_of_games)
 
 
 
